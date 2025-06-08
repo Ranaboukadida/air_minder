@@ -1,4 +1,5 @@
 import 'package:better_buzz/features/auth/register.dart';
+import 'package:better_buzz/features/scanner/scanner.dart';
 import 'package:better_buzz/features/settings/profile.dart';
 import 'package:better_buzz/features/settings/support.dart';
 import 'package:better_buzz/features/temperature/temperature.dart';
@@ -29,12 +30,11 @@ class AppRouter {
       routes: [
         GoRoute(
           path: '/homee',
-          pageBuilder: ((context, state){
+          pageBuilder: ((context, state) {
             return const MaterialPage(
               child: Homee(),
-              );
+            );
           }),
-
         ),
         GoRoute(
             path: '/',
@@ -126,6 +126,13 @@ class AppRouter {
             pageBuilder: ((context, state) {
               return const MaterialPage(
                 child: Settings(),
+              );
+            })),
+        GoRoute(
+            path: '/scanner',
+            pageBuilder: ((context, state) {
+              return const MaterialPage(
+                child: Scanner(),
               );
             })),
       ]);

@@ -1,7 +1,7 @@
 import 'package:better_buzz/core/drawer.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -11,6 +11,20 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  List machines = [
+    {
+      'title': 'Machine 1',
+      'description': FirebaseAuth.instance.currentUser?.email,
+      'icon': Icons.biotech,
+      'location': 'hive1'
+    },
+    {
+      'title': 'Machine 2',
+      'description': FirebaseAuth.instance.currentUser?.email,
+      'icon': Icons.biotech,
+      'location': 'hive1'
+    }
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,23 +76,16 @@ class _HomeState extends State<Home> {
           Expanded(
             child: ListView(
               padding: const EdgeInsets.all(16),
-  
               children: [
-                const Rana (
-                  title: 'Machine 1 ',
-                  description: ' Rana Boukadida',
-                  icon: Icons.biotech,
-                  location: 'hive1',
-                ),
-                const Rana(
-                  title: 'Machine 2',
-                 description: 'Rana Boukadida',
-                  icon: Icons.biotech,
-                  location: 'hive1'
-                ),
-
+                for (final machine in machines)
+                  Rana(
+                    title: machine['title'],
+                    description: machine['description'],
+                    icon: machine['icon'],
+                    location: machine['location'],
+                  ),
                 SizedBox(
-                 height: 180,
+                  height: 180,
                   width: double.infinity,
                   child: Card(
                       clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -89,28 +96,25 @@ class _HomeState extends State<Home> {
                         children: [
                           IconButton.filled(
                             onPressed: () {
-                               context.push('/homee');
+                              context.push('/homee');
                             },
                             icon: const Icon(
                               Icons.add,
                               size: 70,
                             ),
-                            
                           ),
                         ],
                       )),
                 ),
-            
-             
                 const SizedBox(
                   width: 10,
                 ),
               ],
             ),
           ),
-          ],
-        ),
-      );
+        ],
+      ),
+    );
   }
 }
 
@@ -166,33 +170,31 @@ class Rana extends StatelessWidget {
                                         Theme.of(context).colorScheme.primary),
                               ),
                               const SizedBox(height: 5),
-                              Text(
-                                description,
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  )
-                              ),
+                              Text(description,
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                  )),
                             ],
                           )),
                       Align(
                           alignment: Alignment.bottomRight,
                           child: FilledButton.icon(
-                            
-                            onPressed: () {
-                              location == "none" ? null : context.push('/$location');
-                            },
-                            label: const Text(
-                              'Check',
-                              style: TextStyle(fontSize: 15),
-                            ),
-                            icon: Icon(
-                              icon,
-                              size: 20,
+                              onPressed: () {
+                                location == "none"
+                                    ? null
+                                    : context.push('/$location');
+                              },
+                              label: const Text(
+                                'Check',
+                                style: TextStyle(fontSize: 15),
                               ),
-                            style: FilledButton.styleFrom(
-                              minimumSize: const Size(150,50),
-                            )
-                          ))
+                              icon: Icon(
+                                icon,
+                                size: 20,
+                              ),
+                              style: FilledButton.styleFrom(
+                                minimumSize: const Size(150, 50),
+                              )))
                     ],
                   )),
             ],

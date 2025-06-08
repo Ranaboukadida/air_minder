@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "549318837768",
+    "firebase_url": "https://air-minder-default-rtdb.europe-west1.firebasedatabase.app",
     "project_id": "air-minder",
     "storage_bucket": "air-minder.firebasestorage.app"
   },
