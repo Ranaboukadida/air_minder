@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 
 class Scanner extends StatefulWidget {
@@ -19,16 +20,27 @@ class _ScannerState extends State<Scanner> {
     if (code.startsWith(prefix)) {
       // Handle the scanned QR code
       debugPrint('Scanned QR Code: $code');
+
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('Scanned QR Code: $code'),
           duration: const Duration(seconds: 2),
         ),
       );
+
+      context.replace('/', extra: code.substring(prefix.length));
+
       // You can navigate to another screen or perform any action here
     } else {
       debugPrint('Invalid QR Code: $code');
     }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    // ask for camera permission
+    controller.start();
   }
 
   @override

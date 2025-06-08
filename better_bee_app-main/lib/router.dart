@@ -14,7 +14,6 @@ import 'features/home/home.dart';
 import 'features/humidity/humidity.dart';
 import 'features/noise/noise.dart';
 import 'features/settings/support_article.dart';
-import 'features/home/homee.dart';
 
 class AppRouter {
   late final GoRouter router = GoRouter(
@@ -29,16 +28,23 @@ class AppRouter {
       },
       routes: [
         GoRoute(
-          path: '/homee',
-          pageBuilder: ((context, state) {
-            return const MaterialPage(
-              child: Homee(),
-            );
-          }),
-        ),
-        GoRoute(
             path: '/',
             pageBuilder: ((context, state) {
+              // If there is a new machine passed, navigate to home with that machine
+              final newMachine = state.extra as String?;
+
+              if (newMachine != null) {
+                final machineData = {
+                  'title': newMachine,
+                  'description': FirebaseAuth.instance.currentUser?.email,
+                  'icon': Icons.biotech,
+                  'location': newMachine
+                };
+                print('New machine: $machineData');
+                return MaterialPage(
+                  child: Home(newMachine: machineData),
+                );
+              }
               return const MaterialPage(
                 child: Home(),
               );

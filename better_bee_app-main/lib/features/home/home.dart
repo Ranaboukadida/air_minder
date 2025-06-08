@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class Home extends StatefulWidget {
-  const Home({super.key});
+  final Map<String, dynamic>? newMachine;
+  const Home({super.key, this.newMachine});
 
   @override
   State<Home> createState() => _HomeState();
@@ -19,12 +20,26 @@ class _HomeState extends State<Home> {
       'location': 'hive1'
     },
     {
-      'title': 'Machine 3',
+      'title': 'Machine 2',
       'description': FirebaseAuth.instance.currentUser?.email,
       'icon': Icons.biotech,
       'location': 'hive1'
-    }
+    },
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    print('Received machine: ${widget.newMachine}');
+
+    if (widget.newMachine != null) {
+      print('New machine came: ${widget.newMachine!}');
+      setState(() {
+        machines.add(widget.newMachine!);
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -96,7 +111,7 @@ class _HomeState extends State<Home> {
                         children: [
                           IconButton.filled(
                             onPressed: () {
-                              context.push('/homee');
+                              context.push('/scanner');
                             },
                             icon: const Icon(
                               Icons.add,
