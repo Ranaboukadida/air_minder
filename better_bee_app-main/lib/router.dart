@@ -38,7 +38,7 @@ class AppRouter {
                   'title': newMachine,
                   'description': FirebaseAuth.instance.currentUser?.email,
                   'icon': Icons.biotech,
-                  'location': newMachine
+                  'location': "hive1"
                 };
                 print('New machine: $machineData');
                 return MaterialPage(
