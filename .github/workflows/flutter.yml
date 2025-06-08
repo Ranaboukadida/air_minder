@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest # Ubuntu is sufficient for Android builds
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
@@ -16,18 +16,18 @@ jobs:
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
 
-      - name: Navigate to repository
-        uses: cd better_bee_app-main
-
+      # Navigate to the Flutter project directory
+      # If your Flutter project is in a subdirectory, update this value
       - name: Install dependencies
         run: flutter pub get
+        working-directory: better_bee_app-main
 
       - name: Build Android APK
         run: flutter build apk --release
+        working-directory: better_bee_app-main
 
-      # Upload the APK as an artifact
       - name: Upload Android APK
         uses: actions/upload-artifact@v4
         with:
           name: android-apk
-          path: build/app/outputs/flutter-apk/app-release.apk
+          path: better_bee_app-main/build/app/outputs/flutter-apk/app-release.apk
