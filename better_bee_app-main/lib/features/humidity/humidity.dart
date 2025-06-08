@@ -21,6 +21,7 @@ class _HumidityState extends State<Humidity> {
         child: StreamBuilder(
             stream: ref.onValue,
             builder: (context, snapshot) {
+              print("Snapshot: ${snapshot.data}");
               if (snapshot.hasError) {
                 return const Center(child: Text('Something went wrong'));
               }
@@ -137,7 +138,7 @@ class _HumidityState extends State<Humidity> {
                                       ),
                                       IconButton.filled(
                                         onPressed: () {
-                                          context.pop();
+                                          context.go('/');
                                         },
                                         icon: const Icon(Icons.arrow_back),
                                       )

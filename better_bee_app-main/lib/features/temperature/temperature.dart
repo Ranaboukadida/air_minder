@@ -152,7 +152,7 @@ class _TemperatureState extends State<Temperature> {
                                       ),
                                       IconButton.filled(
                                         onPressed: () {
-                                          context.pop();
+                                          context.go('/');
                                         },
                                         icon: const Icon(Icons.arrow_back),
                                       )
