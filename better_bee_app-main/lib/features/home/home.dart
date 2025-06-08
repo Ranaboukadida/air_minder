@@ -19,7 +19,7 @@ class _HomeState extends State<Home> {
       'location': 'hive1'
     },
     {
-      'title': 'Machine 2',
+      'title': 'Machine 3',
       'description': FirebaseAuth.instance.currentUser?.email,
       'icon': Icons.biotech,
       'location': 'hive1'
