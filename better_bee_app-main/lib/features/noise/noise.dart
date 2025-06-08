@@ -179,7 +179,7 @@ class _NoiseState extends State<Noise> {
                                       ),
                                       IconButton.filled(
                                         onPressed: () {
-                                          context.pop();
+                                          context.go('/');
                                         },
                                         icon: const Icon(Icons.arrow_back),
                                       )
