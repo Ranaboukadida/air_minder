@@ -1,3 +1,6 @@
+import java.util.Properties
+import java.io.FileInputStream
+
 plugins {
     id("com.android.application")
     // START: FlutterFire Configuration
@@ -10,7 +13,7 @@ plugins {
 
 android {
     namespace = "com.example.better_buzz"
-    compileSdk = 33
+    compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
     buildFeatures {
