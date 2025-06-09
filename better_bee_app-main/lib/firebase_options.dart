@@ -55,8 +55,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '549318837768',
     projectId: 'air-minder',
     authDomain: 'air-minder.firebaseapp.com',
-    databaseURL:
-        'https://air-minder-default-rtdb.europe-west1.firebasedatabase.app',
+    databaseURL: 'https://air-minder-default-rtdb.europe-west1.firebasedatabase.app',
     storageBucket: 'air-minder.firebasestorage.app',
   );
 
@@ -65,8 +64,8 @@ class DefaultFirebaseOptions {
     appId: '1:549318837768:android:78a82f3b86cbeb8575f3bd',
     messagingSenderId: '549318837768',
     projectId: 'air-minder',
-    databaseURL:
-        'https://air-minder-default-rtdb.europe-west1.firebasedatabase.app',
+    databaseURL: 'https://air-minder-default-rtdb.europe-west1.firebasedatabase.app',
     storageBucket: 'air-minder.firebasestorage.app',
   );
+
 }
